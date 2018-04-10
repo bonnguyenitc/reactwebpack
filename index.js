@@ -27,7 +27,10 @@ app.use(flash());
 app.use(session({
     secret : "reactjs",
     saveUninitialized: true,
-    resave: true
+    resave: false,
+    cookie : {
+        maxAge : 1000*60*60*24
+    }
   }))
 
 
@@ -61,9 +64,3 @@ app.listen(port, (req, res) => {
     console.log("Server is running");
 });
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
